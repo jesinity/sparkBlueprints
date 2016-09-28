@@ -2,6 +2,8 @@ import sbt.Keys._
 
 val sparkVersion = "1.6.0-cdh5.7.0"
 val scalaVersionNumber: String = "2.10.6"
+val scalaTestVersion = "3.0.0"
+val typesafeConfigVersion = "1.3.1"
 
 /**
   * working job
@@ -32,6 +34,10 @@ def commonDependecies(moduleName: String) = {
     version := "1.0.0-SNAPSHOT",
     scalaVersion := scalaVersionNumber,
     javaOptions += "-Xms512m -Xmx2G",
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % scalaTestVersion,
+      "com.typesafe" % "config" % typesafeConfigVersion
+    ),
     resolvers ++= Seq(
       Resolver.mavenLocal,
       "Cloudera CDH" at "https://repository.cloudera.com/artifactory/cloudera-repos/",
